@@ -19,6 +19,8 @@
             pkgs.just
             pkgs.shellspec
             pkgs.nixpkgs-fmt
+            pkgs.shellcheck
+            pkgs.shfmt
           ];
           shellHook = "
             pnpm add -g  @mablhq/mabl-cli
