@@ -9,3 +9,6 @@ fmt:
 
 lint:
   @shellcheck *.sh
+
+test:
+  @shellspec -P "*.spec"

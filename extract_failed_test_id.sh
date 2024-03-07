@@ -11,7 +11,7 @@ if [ -z "$file" ]; then
     exit 1
 fi
 
-declare -A test_map || (echo 'Bash error has occured. Update Bash version to 4 or higher.' && exit 1)
+declare -A test_map || (echo 'Bash error has occured. Update Bash version to 4 or higher.' 1>&2 && exit 1)
 failed_test_count=0
 failed_test_id_list=()
 line_no=1
