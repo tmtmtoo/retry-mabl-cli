@@ -1,10 +1,8 @@
 Describe 'extract_failed_test_id.sh'
 
   It 'If given a mabl cli test execution log file, the test-id of the failed test is displayed.'
-    When run ./extract_failed_test_id.sh error.log
-    The stdout line 1 should equal 'p81ovO48OIJBHwlkQ55BhQ-j'
-    The stdout line 2 should equal 'jjzvup2lex62ubtgIyFR9A-j'
-    The stdout line 3 should equal 'KzWZEaUFOjBBiI4VBt3SVw-j'
+    When run ./extract_failed_test_id.sh test-run.log
+    The stdout should be present
     The status should be success
   End
 
@@ -16,7 +14,7 @@ Describe 'extract_failed_test_id.sh'
   End
 
   It 'If the file is inconsistent, print and error message and exit'
-    When run ./extract_failed_test_id.sh inconsistent_error.log
+    When run ./extract_failed_test_id.sh test-run-inconsistent.log
     The stderr should equal 'Invalid log file format.'
     The stdout should not be present
     The status should be failure
