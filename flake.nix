@@ -14,17 +14,11 @@
       {
         devShell = pkgs.mkShell {
           buildInputs = [
-            pkgs.nodejs
-            pkgs.nodePackages.pnpm
             pkgs.just
             pkgs.shellspec
-            pkgs.nixpkgs-fmt
             pkgs.shellcheck
             pkgs.shfmt
           ];
-          shellHook = "
-            pnpm add -g  @mablhq/mabl-cli
-          ";
         };
         formatter = pkgs.nixpkgs-fmt;
       }
