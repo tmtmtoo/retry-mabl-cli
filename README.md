@@ -8,7 +8,7 @@ End-to-end (E2E) tests are prone to failure due to environmental dependencies. T
 
 ```.bash
 $ mabl tests run {{YOUR_OPTIONS}} | tee test-run.log
-$ curl -sL https://raw.githubusercontent.com/tmtmtoo/retry-mabl-cli/main/extract_failed_test_id.sh \
+$ curl -sL https://raw.githubusercontent.com/tmtmtoo/retry-mabl-cli/v1.0.0/extract_failed_test_id.sh \
   | bash -s test-run.log \
   | xargs -L 1 mabl tests run {{YOUR_OPTIONS}} --id
 ```
