@@ -2,8 +2,6 @@
 
 set -e
 
-cd "$(dirname "$0")"
-
 file=$1
 
 if [ -z "$file" ]; then
