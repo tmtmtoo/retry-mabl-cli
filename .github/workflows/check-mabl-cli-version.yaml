@@ -17,7 +17,7 @@ jobs:
       - name: previous workflow run-id
         id: previous-workflow-run-id
         run: |
-          PREV_ID=$(curl -fsSL 'https://api.github.com/repos/tmtmtoo/retry-mabl-cli/actions/runs?per_page=1' | jq -r '.workflow_runs[0].id')
+          PREV_ID=$(curl -fsSL 'https://api.github.com/repos/tmtmtoo/retry-mabl-cli/actions/runs?per_page=2' | jq -r '.workflow_runs[1].id')
           echo "GITHUB_PREVIOUS_RUN_ID=$PREV_ID" >> $GITHUB_ENV
 
       - uses: actions/download-artifact@v4
@@ -26,6 +26,7 @@ jobs:
           run-id: ${{ env.GITHUB_PREVIOUS_RUN_ID }}
 
       - name: show mabl-cli latest version
+        if: failure()
         run: npm info @mablhq/mabl-cli version > latest && cat latest
 
       - name: compare with previous results
@@ -36,9 +37,11 @@ jobs:
         run: cat mabl-cli-version
 
       - name: rename
+        if: failure()
         run: mv latest mabl-cli-version
 
       - uses: actions/upload-artifact@v4
+        if: failure()
         with:
           name: mabl-cli-version
           path: mabl-cli-version
