@@ -26,7 +26,6 @@ jobs:
           run-id: ${{ env.GITHUB_PREVIOUS_RUN_ID }}
 
       - name: show mabl-cli latest version
-        if: failure()
         run: npm info @mablhq/mabl-cli version > latest && cat latest
 
       - name: compare with previous results
@@ -37,11 +36,9 @@ jobs:
         run: cat mabl-cli-version
 
       - name: rename
-        if: failure()
         run: mv latest mabl-cli-version
 
       - uses: actions/upload-artifact@v4
-        if: failure()
         with:
           name: mabl-cli-version
           path: mabl-cli-version
